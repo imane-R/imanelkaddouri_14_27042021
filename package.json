@@ -1,0 +1,19 @@
+{
+  "name": "imanelkaddouri_14_27042021",
+  "version": "1.0.0",
+  "description": "Welcome to HRnet! This is our company's internal application to create and view employee records.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imane-R/imanelkaddouri_14_27042021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imane-R/imanelkaddouri_14_27042021/issues"
+  },
+  "homepage": "https://github.com/imane-R/imanelkaddouri_14_27042021#readme"
+}

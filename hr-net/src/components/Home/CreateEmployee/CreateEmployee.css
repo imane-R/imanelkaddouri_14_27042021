@@ -15,7 +15,7 @@
 }
 .CreateEmployee{
     background:white;
-    width: 500px;
+    width: 460px;
     border-radius: 15px;
     margin: auto;
     padding: 15px;
@@ -34,21 +34,17 @@
     color: #022334;
 }
 .CreateEmployee input{
-    border-radius: 15px;
-    height: 30px;
-    width: 449px;
-    border-color: #94d1ec;
+    border-radius: 4px;
+    height: 29px;
+    width: 451px;
 }
-.CreateEmployee input:focus {
-    background-color: #94d1ec;
-    transform: scale(1.1);
-  }
-
 .address {
-    margin-top: 10px;
+    margin-top: 33px;
     font-size: x-large;
     font-weight: bolder;
     color: #022334;
+    border: none;
+    padding: 0;
 }
 button{
     height: 36px;
@@ -67,4 +63,10 @@ select{
     width: 156px;
     border-width: 2px;
     border-color: #94d1ec;
+}
+.error {
+    border-color: red;
+  }
+.errorMessage{
+    color: red;
 }
