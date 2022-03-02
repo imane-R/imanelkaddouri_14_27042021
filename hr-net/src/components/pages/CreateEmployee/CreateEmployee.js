@@ -6,7 +6,11 @@ import { states, departments } from "../../../data/Data";
 import Select from 'react-select';
 import { Modal } from 'react-modal-ib'
 
+
+
+
 const CreateEmployee = ({ addEmployee }) => {
+    
     const [showModel, setShowModel] = useState(false);
     const [form, setForm] = useState({
         firstName: {
@@ -109,37 +113,37 @@ const CreateEmployee = ({ addEmployee }) => {
         let newForm = { ...form }
         newForm.hasError = false;
 
-        if (newForm.firstName.value.length < 2 || !newForm.firstName.value.match(/^([a-zA-Z]+)$/)) {
+        if (newForm.firstName.value.length < 2 || !newForm.firstName.value.match(/^[a-zA-Z\s]*$/)) {
             newForm.firstName.hasError = true;
             newForm.hasError = true;
             newForm.firstName.errorMessage = 'First Name must have at least 2 caracters';
         }
 
-        if (newForm.lastName.value.length < 2 || !newForm.lastName.value.match(/^([a-zA-Z]+)$/)) {
+        if (newForm.lastName.value.length < 2 || !newForm.lastName.value.match(/^[a-zA-Z\s]*$/)) {
             newForm.lastName.hasError = true;
             newForm.hasError = true;
             newForm.lastName.errorMessage = 'Last Name must have at least 2 caracters';
         }
 
-        if (!newForm.birthdate.value.length) {
+        if (newForm.birthdate.value.length < 2) {
             newForm.birthdate.hasError = true;
             newForm.hasError = true;
             newForm.birthdate.errorMessage = 'Please add a birth date';
         }
 
-        if (!newForm.startdate.value.length) {
+        if (newForm.startdate.value.length < 2) {
             newForm.startdate.hasError = true;
             newForm.hasError = true;
             newForm.startdate.errorMessage = 'Please add a start date';
         }
 
-        if (newForm.street.value.length < 2 || !newForm.street.value.match(/^([a-zA-Z]+)$/)) {
+        if (newForm.street.value.length < 2 || !newForm.street.value.match(/^[a-zA-Z\s]*$/)) {
             newForm.street.hasError = true;
             newForm.hasError = true;
             newForm.street.errorMessage = 'Street must have at least 2 caracters';
         }
 
-        if (newForm.city.value.length < 2 || !newForm.city.value.match(/^([a-zA-Z]+)$/)) {
+        if (newForm.city.value.length < 2 || !newForm.city.value.match(/^[a-zA-Z\s]*$/)) {
             newForm.city.hasError = true;
             newForm.hasError = true;
             newForm.city.errorMessage = 'City must have at least 2 caracters';
@@ -171,7 +175,11 @@ const CreateEmployee = ({ addEmployee }) => {
             zipCode: form.zipCode.value
         }
         setShowModel(true);
-        addEmployee(form_data)
+        addEmployee(form_data);
+    }
+
+    const closeModal = () => {
+        setShowModel(!showModel);
     }
 
     return (
@@ -221,7 +229,7 @@ const CreateEmployee = ({ addEmployee }) => {
                     <button type="submit" className="btn" onClick={formValidate}>Save</button>
                 </div>
             </div>
-            {showModel && <Modal modalmessage="Employee Created!" buttonContent="close" />}
+            {showModel && <Modal modalmessage="Employee Created!" buttonContent="close" modalClose={closeModal} />}
         </div>
     )
 }

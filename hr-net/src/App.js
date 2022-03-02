@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/common/Header/Header';
-import Home from './components/Home/Home';
-import EmployeeListPage from './components/List/List';
+import CreateEmployee from './components/pages/CreateEmployee/CreateEmployee';
+import EmployeeListPage from './components/pages/EmployesList/List';
 import { useState } from 'react';
 
 
@@ -10,16 +10,16 @@ import { useState } from 'react';
 function App() {
   //employee state
   const [dataEmployees, setDataEmployees] = useState([{
-    id: Number,
-    firstName: '',
-    lastName: '',
-    startDate: '',
-    department: '',
-    dateOfBirth: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: ''
+    id: '9',
+    firstName: 'jane',
+    lastName: 'eyer',
+    dateOfBirth: '08/06/95',
+    startDate: '08/06/22',
+    street: 'visca',
+    city: 'Alaa',
+    state: 'Alaska',
+    zipCode: '23009',
+    department: 'Sales',
   }])
   const addEmployee = (newEmployee) => {
     setDataEmployees([...dataEmployees, { ...newEmployee }]);
@@ -29,7 +29,7 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Home addEmployee={addEmployee} />} />
+          <Route path="/" element={<CreateEmployee addEmployee={addEmployee} />} />
           <Route path="/list" element={<EmployeeListPage data={dataEmployees} />} />
         </Routes>
       </div>

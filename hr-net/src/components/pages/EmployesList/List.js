@@ -4,13 +4,13 @@ import MaterialTable from "@material-table/core";
 const columns = [
     { title: 'First Name', field: 'firstName' },
     { title: 'Last Name', field: 'lastName' },
-    { title: 'Start Date', field: 'startDate' },
     { title: 'Date of Birth', field: 'dateOfBirth' },
+    { title: 'Start Date', field: 'startDate' },
     { title: 'Street', field: 'street' },
     { title: 'City', field: 'city' },
-    { title: 'Department', field: 'department' },
     { title: 'State', field: 'state' },
     { title: 'Zip Code', field: 'zipCode' },
+    { title: 'Department', field: 'department' }
 ]
 
 const EmployeeListPage = ({ data }) => {
