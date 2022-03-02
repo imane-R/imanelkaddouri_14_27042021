@@ -6,7 +6,6 @@
     margin: 0;
 }
 
-
 .CreateEmployee .container {
     display: flex;
     flex-direction: column;
@@ -20,6 +19,8 @@
     margin: auto;
     padding: 15px;
     margin-top: 35px;
+    margin-bottom: 35px;
+    box-shadow: -1px 1px 20px 13px lightslategrey;
 }
 .CreateEmployee h2{
     text-align: center;
@@ -62,11 +63,15 @@ select{
     height: 30px;
     width: 156px;
     border-width: 2px;
-    border-color: #94d1ec;
 }
 .error {
     border-color: red;
   }
 .errorMessage{
     color: red;
+    font-size: 14px !important;
+    font-weight: 200 !important;
+}
+#state{
+    font-size: small;
 }

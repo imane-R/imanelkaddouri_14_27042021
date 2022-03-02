@@ -5,13 +5,14 @@ import React, { useState } from 'react'
 import { states, departments } from "../../../data/Data";
 import Select from 'react-select';
 import { Modal } from 'react-modal-ib'
+import { selectStyle } from "./SelectStyle";
 
 
 
 
 const CreateEmployee = ({ addEmployee }) => {
     
-    const [showModel, setShowModel] = useState(false);
+    const [isShowing, setIsShowing] = useState(false);
     const [form, setForm] = useState({
         firstName: {
             value: "",
@@ -174,12 +175,12 @@ const CreateEmployee = ({ addEmployee }) => {
             state: form.state.value,
             zipCode: form.zipCode.value
         }
-        setShowModel(true);
+        toggle();
         addEmployee(form_data);
     }
 
-    const closeModal = () => {
-        setShowModel(!showModel);
+    function toggle() {
+        setIsShowing(!isShowing);
     }
 
     return (
@@ -207,29 +208,29 @@ const CreateEmployee = ({ addEmployee }) => {
                         <legend>Address</legend>
 
                         <label htmlFor="street">Street</label>
-                        <input className="input-field" required type="text" name="street" id="street" value={form.street.value} onChange={handleChange} />
+                        <input className={'input-field ' + (form.firstName.hasError ? 'error' : '')} required type="text" name="street" id="street" value={form.street.value} onChange={handleChange} />
                         {form.street.hasError ? <span className="errorMessage">{form.street.errorMessage}</span> : ''}
 
                         <label htmlFor="city">City</label>
-                        <input className="input-field" required type="text" name="city" id="city" value={form.city.value} onChange={handleChange} />
+                        <input className={'input-field ' + (form.firstName.hasError ? 'error' : '')} required type="text" name="city" id="city" value={form.city.value} onChange={handleChange} />
                         {form.city.hasError ? <span className="errorMessage">{form.city.errorMessage}</span> : ''}
 
                         <label htmlFor="state">State</label>
-                        <Select aria-label="state" id="state" required defaultValue={states[0]} options={states} onChange={handleChangeState} />
+                        <Select aria-label="state" id="state" styles={selectStyle} required defaultValue={states[0]} options={states} onChange={handleChangeState} />
 
                         <label htmlFor="zip-code">Zip Code</label>
-                        <input className="input-field" required type="number" name="zipCode" id="zip-code" value={form.zipCode.value} onChange={handleChange} />
+                        <input className={'input-field ' + (form.firstName.hasError ? 'error' : '')} required type="number" name="zipCode" id="zip-code" value={form.zipCode.value} onChange={handleChange} />
                         {form.zipCode.hasError ? <span className="errorMessage">{form.zipCode.errorMessage}</span> : ''}
                     </fieldset>
 
                     <label htmlFor="department">Department</label>
-                    <Select aria-label="department" defaultValue={departments[0]} options={departments} onChange={handleChangeDepartment} />
+                    <Select aria-label="department" styles={selectStyle} defaultValue={departments[0]} options={departments} onChange={handleChangeDepartment}  />
                 </form>
                 <div className="wrapper">
                     <button type="submit" className="btn" onClick={formValidate}>Save</button>
                 </div>
             </div>
-            {showModel && <Modal modalmessage="Employee Created!" buttonContent="close" modalClose={closeModal} />}
+             <Modal isShowing={isShowing} modalMessage="Employee Created!"  toggle={toggle} />
         </div>
     )
 }
