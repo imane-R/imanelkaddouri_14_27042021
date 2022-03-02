@@ -138,7 +138,7 @@ const CreateEmployee = ({ addEmployee }) => {
             newForm.startdate.errorMessage = 'Please add a start date';
         }
 
-        if (newForm.street.value.length < 2 || !newForm.street.value.match(/^[a-zA-Z\s]*$/)) {
+        if (newForm.street.value.length < 2 || !newForm.street.value.match(/^[a-zA-Z-0-9\s]*$/)) {
             newForm.street.hasError = true;
             newForm.hasError = true;
             newForm.street.errorMessage = 'Street must have at least 2 caracters';
