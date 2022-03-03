@@ -12,7 +12,9 @@ const columns = [
     { title: 'Zip Code', field: 'zipCode' },
     { title: 'Department', field: 'department' }
 ]
-
+/** create list table 
+ * @param {object} data
+ */
 const EmployeeListPage = ({ data }) => {
     return (
         <div className="listContainer">

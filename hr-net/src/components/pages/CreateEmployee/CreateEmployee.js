@@ -8,11 +8,16 @@ import { Modal } from 'react-modal-ib'
 import { selectStyle } from "./SelectStyle";
 
 
-
+/** create a new employee using form 
+ * @param {object} addEmployee
+ */
 
 const CreateEmployee = ({ addEmployee }) => {
-    
+
+    // state of modal 
     const [isShowing, setIsShowing] = useState(false);
+
+    // intail state of form
     const initForm = {
         firstName: {
             value: "",
@@ -73,6 +78,8 @@ const CreateEmployee = ({ addEmployee }) => {
         }
         setForm(newForm);
     }
+
+    //handle form state change for birthday
     const handleChangebirthdate = (date) => {
         let newForm = { ...form };
         newForm.birthdate = {
@@ -82,6 +89,7 @@ const CreateEmployee = ({ addEmployee }) => {
         setForm(newForm);
     }
 
+    //handle form state change for start date
     const handleChangestartdate = (date) => {
         let newForm = { ...form };
         newForm.startdate = {
@@ -91,6 +99,7 @@ const CreateEmployee = ({ addEmployee }) => {
         setForm(newForm);
     }
 
+    //handle form state change for state select
     const handleChangeState = (option) => {
         let newForm = { ...form };
         newForm.state = {
@@ -100,6 +109,7 @@ const CreateEmployee = ({ addEmployee }) => {
         setForm(newForm);
     }
 
+    //handle form state change for department select
     const handleChangeDepartment = (option) => {
         let newForm = { ...form };
         newForm.department = {
@@ -109,7 +119,7 @@ const CreateEmployee = ({ addEmployee }) => {
         setForm(newForm);
     }
 
-
+     //the conditions to validiate the form 
     const formValidate = (e) => {
         e.preventDefault();
         let newForm = { ...form }
@@ -163,7 +173,7 @@ const CreateEmployee = ({ addEmployee }) => {
         }
 
     }
-    //form submit
+    //form submit and save the new employee
     const saveEmployee = () => {
         const form_data = {
             id: Math.floor(Math.random() * 100),
@@ -181,6 +191,7 @@ const CreateEmployee = ({ addEmployee }) => {
         addEmployee(form_data);
     }
 
+    // modal toggle 
     function toggle() {
         setIsShowing(!isShowing);
     }

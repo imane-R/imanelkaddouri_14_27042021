@@ -74,3 +74,11 @@ select{
 #state{
     font-size: small;
 }
+@media screen and (max-device-width : 480px) {
+    .CreateEmployee{
+        width: 334px;
+    }
+    .CreateEmployee input {
+        width: 329px;
+    }
+}
