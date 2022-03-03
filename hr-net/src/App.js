@@ -1,9 +1,11 @@
 import './App.css';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/common/Header/Header';
-import CreateEmployee from './components/pages/CreateEmployee/CreateEmployee';
-import EmployeeListPage from './components/pages/EmployesList/List';
-import { useState } from 'react';
+
+const CreateEmployee = React.lazy(() => import("./components/pages/CreateEmployee/CreateEmployee"));
+const EmployeeListPage = React.lazy(() => import("./components/pages/EmployesList/List"));
+
 
 
 
@@ -29,8 +31,12 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<CreateEmployee addEmployee={addEmployee} />} />
-          <Route path="/list" element={<EmployeeListPage data={dataEmployees} />} />
+          <Route path="/" element={<React.Suspense fallback={<>...</>}>
+            <CreateEmployee addEmployee={addEmployee} />
+          </React.Suspense>} />
+          <Route path="/list" element={<React.Suspense fallback={<>...</>}>
+            <EmployeeListPage data={dataEmployees} />
+          </React.Suspense>} />
         </Routes>
       </div>
     </BrowserRouter>

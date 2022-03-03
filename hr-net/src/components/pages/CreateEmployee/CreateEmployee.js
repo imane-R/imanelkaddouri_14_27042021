@@ -13,7 +13,7 @@ import { selectStyle } from "./SelectStyle";
 const CreateEmployee = ({ addEmployee }) => {
     
     const [isShowing, setIsShowing] = useState(false);
-    const [form, setForm] = useState({
+    const initForm = {
         firstName: {
             value: "",
             hasError: false,
@@ -61,7 +61,8 @@ const CreateEmployee = ({ addEmployee }) => {
         },
 
         hasError: false
-    })
+    };
+    const [form, setForm] = useState(initForm);
 
     //handle form state change
     const handleChange = (evt) => {
@@ -158,6 +159,7 @@ const CreateEmployee = ({ addEmployee }) => {
         setForm(newForm);
         if (!newForm.hasError) {
             saveEmployee();
+            setForm(initForm);
         }
 
     }
