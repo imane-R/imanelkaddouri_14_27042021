@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/common/Header/Header';
 
@@ -11,7 +11,11 @@ const EmployeeListPage = React.lazy(() => import("./components/pages/EmployesLis
 
 function App() {
   //employee state
-  const [dataEmployees, setDataEmployees] = useState([{
+  const [dataEmployees, setDataEmployees] = useState(() => {
+      // getting stored value
+  const saved = localStorage.getItem("dataEmployees");
+  const initialValue = JSON.parse(saved);
+  return initialValue || [{
     id: '9',
     firstName: 'jane',
     lastName: 'eyer',
@@ -19,10 +23,14 @@ function App() {
     startDate: '08/06/22',
     street: 'visca',
     city: 'Alaa',
-    state: 'Alaska',
+    state: 'AL',
     zipCode: '23009',
     department: 'Sales',
-  }])
+  }] });
+  useEffect(() => {
+    localStorage.setItem('dataEmployees', JSON.stringify(dataEmployees));
+  }, [dataEmployees]);
+  
   const addEmployee = (newEmployee) => {
     setDataEmployees([...dataEmployees, { ...newEmployee }]);
   }
@@ -45,4 +53,3 @@ function App() {
 
 export default App;
 
-//<Route path="/list" element={<List/>}/>
